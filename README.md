@@ -21,4 +21,36 @@ Interacting via interactive cards in google chat and integrating with google she
 
 ### Chatbot code
 #### Editing appscript json
-- 
+- Modify the code in appsscript.json tab with the highlighted code in the box below:
+```
+{
+  "timeZone": "Asia/Kolkata",
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Drive",
+        "serviceId": "drive",
+        "version": "v2"
+      }
+    ],
+    "libraries": [
+      {
+        "userSymbol": "OAuth2",
+        "version": "41",
+        "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF"
+      }
+    ]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "chat": {}
+}
+```
+#### Adding OAuth2 library to apps script
+- Click on the '+' button next to the libraries on the left pane
+- Copy paste '1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF' in the script-id box and click look up
+- Apps script will fetch the version no. (which is 41 at the time of this writing) and identifier
+- Click add and you will see that the library is added on the left pane
+
+
+
