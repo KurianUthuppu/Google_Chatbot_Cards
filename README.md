@@ -52,5 +52,32 @@ Interacting via interactive cards in google chat and integrating with google she
 - Apps script will fetch the version no. (which is 41 at the time of this writing) and identifier
 - Click add and you will see that the library is added on the left pane
 
+#### The main functions in the code
+- As discussed in my earlier project -> https://github.com/KurianUthuppu/Google_Chatbot.git:
+  - The basic functions include:
+     a) function onAddToSpace(event) {}
+        - Gets invoked when the chatbot is added to a space
+     b) function onRemoveFromSpace(event) {}
+        - Gets invoked when the chatbot is removed from a space
+     c) function onMessage(event) {}
+        - Gets invoked when the user types in a message
+     d) function onCardClick(event) {}
+        - Gets invoked when the user clicks a widget (button, image) on the interactive card
 
+#### Interactive cards
+- A card mainly consists of:
+  - Header with title, sub-title and an imageurl
+  - Widgets with paragraph, images, and buttons
 
+The code towards creating the final card is as below:
+```
+function createCardResponse_2(widgets) {
+  return {
+    cards: [{
+      sections: [{
+        widgets: widgets
+      }]
+    }]
+  };
+}
+```
