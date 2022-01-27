@@ -71,9 +71,9 @@ Interacting via interactive cards in google chat and integrating with google she
 
 The code towards creating the final card is as below:
 ```
-function createCardResponse_2(widgets) {
+function createCardResponse(widgets) {
   return {
-    cards: [{
+    cards: [HEADER, {
       sections: [{
         widgets: widgets
       }]
