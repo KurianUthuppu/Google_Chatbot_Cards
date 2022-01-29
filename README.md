@@ -125,4 +125,14 @@ var widgets = [{
  } 
 
 ```
-#### 
+#### Card Response
+Sample code for a card-response is given below:
+```
+function onCardClick(event) {
+  var message = '';
+  if (event.action.actionMethodName === 'new_requirement') {
+  return { text: "Category entered as 'New Requirement'" };
+  } else if (event.action.actionMethodName === 'issues') {
+  return { text: "Category entered as 'Issues'" };
+  }
+```
