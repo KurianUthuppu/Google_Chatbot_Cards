@@ -92,7 +92,7 @@ var HEADER = {
   }
 };
 ```
-Widgets could be defined, designed in the onMessage event function as below;
+Widgets could be defined, designed in the onMessage event function as below;  
 The below code creates 2 buttons namely - '(a) New Requirement' & '(b) Issues'
 ```
 function onMessage(event) {
@@ -136,3 +136,4 @@ function onCardClick(event) {
   return { text: "Category entered as 'Issues'" };
   }
 ```
+#### Writing values to an excel sheet
