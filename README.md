@@ -64,7 +64,7 @@ Interacting via interactive cards in google chat and integrating with google she
      d) function onCardClick(event) {}
         - Gets invoked when the user clicks a widget (button, image) on the interactive card
 
-#### Interactive cards
+#### Creating Interactive cards
 - A card mainly consists of:
   - Header with title, sub-title and an imageurl
   - Widgets with paragraph, images, and buttons
@@ -81,3 +81,48 @@ function createCardResponse(widgets) {
   };
 }
 ```
+Header style could be defined, designed as below:
+```
+var DEFAULT_IMAGE_URL = 'https://goo.gl/bMqzYS';
+var HEADER = {
+  header: {
+    title : 'mU ChatBot',
+    subtitle : 'Welcome to mooOn ChatBot',
+    imageUrl : DEFAULT_IMAGE_URL
+  }
+};
+```
+Widgets could be defined, designed in the onMessage event function as below;
+The below code creates 2 buttons namely - '(a) New Requirement' & '(b) Issues'
+```
+function onMessage(event) {
+var widgets = [{
+        textParagraph: {
+          text: 'Hello ' + name + ',<br/>Please choose the category:'
+        }
+      }, {
+        buttons: [{
+          textButton: {
+            text: '(a) New Requirement',
+            onClick: {
+              action: {
+                actionMethodName: 'new_requirement',
+              }
+            }
+          }
+        }, {
+          textButton: {
+            text: '(b) Issues',
+            onClick: {
+              action: {
+                actionMethodName: 'issues',
+              }
+            }
+          }
+        }]
+      }];
+    return createCardResponse(widgets);
+ } 
+
+```
+#### 
