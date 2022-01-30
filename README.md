@@ -140,7 +140,7 @@ function onCardClick(event) {
 - Here the excel sheet is to be identified by it's id
 - You can the id of the sheet from the webaddress when you are viewin the same
   - It will be between https://docs.google.com/spreadsheets/d/ & /edit#gid=0
-  - An example is shown below for your reference; the highlighted portion is the id of this particular sheet
+  - An example is shown below for your reference; in this the sheet's id is __1zAOgTSgqTz1hm58tOZvcHA7jm2Cbuy9F7nZAB23DaUM__
 ```
-https://docs.google.com/spreadsheets/d/**1wAOgTMgqTz1hm35tOZvcHA7jm2Cbuy9F7nZAB91DaUM**/edit#gid=0
+https://docs.google.com/spreadsheets/d/1zAOgTSgqTz1hm58tOZvcHA7jm2Cbuy9F7nZAB23DaUM/edit#gid=0
 ```
