@@ -144,3 +144,20 @@ function onCardClick(event) {
 ```
 https://docs.google.com/spreadsheets/d/1zAOgTSgqTz1hm58tOZvcHA7jm2Cbuy9F7nZAB23DaUM/edit#gid=0
 ```
+- One can access the excel sheet and get the last row and column using code below
+- The last row and last column value (that contains values) will be stored in the variables lr & lc
+- Note: In case there are no values stored in the sheet, both lr & lc will contain value 1
+```
+wb = SpreadsheetApp.openById("1zAOgTSgqTz1hm58tOZvcHA7jm2Cbuy9F7nZAB23DaUM");
+lr = wb.getActiveSheet().getLastRow();
+lc = wb.getActiveSheet().getLastColumn();
+```
+- One can get and set the values of/to a particular cell using the below code
+```
+// Getting value
+value_cell = wb.getActiveSheet().getRange(lr, 9).getValue();
+
+// Setting value
+user_cell = wb.getActiveSheet().getRange(lr+1, 3);
+user_cell.setValue(name);
+```
