@@ -160,4 +160,10 @@ value_cell = wb.getActiveSheet().getRange(lr, 9).getValue();
 // Setting value
 user_cell = wb.getActiveSheet().getRange(lr+1, 3);
 user_cell.setValue(name);
+
+// Setting value with formatting
+userid_cell = wb.getActiveSheet().getRange(lr+1, 2); 
+userid_cell.setValue(1).setNumberFormat("000000");
 ```
+#### Sending email using app script
+
