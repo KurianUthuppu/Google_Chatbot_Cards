@@ -166,4 +166,34 @@ userid_cell = wb.getActiveSheet().getRange(lr+1, 2);
 userid_cell.setValue(1).setNumberFormat("000000");
 ```
 #### Sending email using app script
+- Emails could be sent by invoking MailApp
+- Example code is given below:
+```
+var name = event.user.displayName;
+var email = event.user.email;
+
+recipients = email;
+subject = "Test Email";
+body = "Hello "+name+",<br/>This is a test email !.<br/><br/>Thanks & Regards,<br/>Customer-Care";
+MailApp.sendEmail({to: recipients, subject: subject, htmlBody: body});
+```
+#### Converting name to proper case
+- The following function will convert strings such as names to proper format
+- For example if the input is 'KURIAN UTHPUPU', then the output would be 'Kurian Uthuppu'
+- Sample code shown below:
+```
+function PROPER_CASE(str) {
+  if (typeof str != "string")
+    throw `Expected string but got a ${typeof str} value.`;
+  
+  str = str.toLowerCase();
+
+  var arr = str.split(" ");
+
+  return arr.reduce(function(val, current) {
+    return val += (current.charAt(0).toUpperCase() + current.slice(1))+" ";
+  }, "");
+}
+```
+#### Getting an attachment and storing in google drive
 
