@@ -197,3 +197,101 @@ function PROPER_CASE(str) {
 ```
 #### Getting an attachment and storing in google drive
 
+```
+// Get the attachment name
+var image_uploaded = event.message.attachment[0].name;
+
+// Extract the attachment
+var image_uploaded_attachment = getAttachment(image_uploaded);
+
+// Store the attachment in the requisite drive folder and get the filename
+output = getByteStream(image_uploaded_attachment.attachmentDataRef.resourceName, name);
+```
+- One needs to get the private key and client-id to access the data from the rest-api
+
+```
+var PRIVATE_KEY =
+    '-----BEGIN PRIVATE KEY-----\nUAIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCnBRbLUjPIZDiZ\nFxhRC1UDk4mzGnwOJYick9NzmYZgHk68gAthdMv6466Qga+9DWzMQBI8vgfnnVXY\n1LgN9vJhhZEMol8BVoOmoupWcNxS0rTCN5YYb5Jf8KIbkgM54vtw8sa3w6/R7TwN\nKSC5/W/qxwAbMStiF+fmzFQWS6iWSx5eToSKhMytrLaf6Fask5r/nzPk1UAZiU5k\ncyvYHrGb2YvCs1B1/icPcBIiA1hxpTro9laZrbEpsX6btwRA6TFBNrlR/tyOQZlc\nH5mzewpO5EUPZV9bdbMBoIWwmfJ1BqBesOygUG5tP/ntQYFUmi/elrPBWqC4DfGG\neq8QuNJTAgMBAAECggEADEifiIyfKlnUn83HCA7jqEOtmPKVtSSli36Dyri73U3d\nVJfGPoCsj+M274HaPvlByzPbI4SGaE52BeB/OOe0o9+C737xpdOLEzJgMcNTMPQ2\nPyJ/c4ShK1UzVvvCKPu8qm3wl4tY3wOnqwd6JNla5dWE+HsBSdGgSKU2ef1OhN8b\nDSbpyyuZRn+orAdICBVKe7ZHOFTZ+W9KXEIiyklygKjHou87topj6FrzKiBKml/T\ntmoAyEib190alNYUbtOtClJr8GDqfdRgeAZf0c8DOfJzaDePYWj1EODQgC22w+/k\nlBuM11MfUsRv9b2wV3jaQKCaoTPRv7k5y6CjsjusgQKBgQDSMJY54+LAX1dInYFK\nWTak779iZm5e+AYPJmaSwL4X1ih4IvzpCq0UQQw02yWSemlT8c9qkW5XRabdthLk\nr+KdVxue68M/e9o9pTZG9XFcgJ5ungteBxaOHBQX05LQSScMigUvceyHl1JN9ty3\nA0p7ihMKC5ivdZYLJcO0viNSUQKBgQDLa9zmhL5HrhkjdOogHffpeWuqeiYsN1Ph\nygazMzIIGIgO9xa2/jgWRaJQgHf4z81RftC18u3DqjSQORkdZNSo1zoAHpep4qm7\ngdxfRF33Qwe7G5PP/XZhxZTalYcVVjjHPkAwma2xaSrspLnfE2zuP/ey9jY1DgxS\nCzHPDmvtYwKBgGRSLGAkm+WVm+Ncycjiq+ItS/t7SFUrrrisa2i/9fsKjGZKzMut\n/M4d/enIHza6lmsqjwUeRLwC0pIfxQTBrjfKy7QecyJpytCBelaD74dnHDdP170Z\nZPqvDCgTI4+mWqzxc2ghx/Mvlmj/2ni/aV1tmYjB4C5ewS6w56fs2I8BAoGARdgl\nIqkVRDtMulXcRWbExk9AXmpOTQQ6Mt5Q6pp7ZTg3Dxxbmj0zOMJz9rwFdVK0JnUq\naC6e4H3CSnqwWt1R/x7W9U+Lt3Lx4EW4SqWItes37lCLsfBPA0b50wtgND1EhXSk\nSYuajb2UVWhBwYxD7JHeFH5hIlpOdKUPVw6WlA0CgYATrK+VVcNaLXrIuzXyXc/m\nbznVS2mg7WZM/yUzo6CT4Pq96y1P+6oz/XnGQYhR979QuOlbDC3Xmmlamkd7pLhN\nX4BYVK6nzAufJFtGoo41brWmMsQGHBERF/4FsgYNf4XkSvPQOJVN750uXRYc8A5o\nadxQkXRHv9ikdPNlMQEiZW==\n-----END PRIVATE KEY-----\n';
+var CLIENT_EMAIL = 'krapht-zanctur-913439@appspot.gserviceaccount.com';
+```
+- getAttachment(image_uploaded)
+```
+/**
+ * Authorize the user
+ */
+function getOAuth2Service() {
+  return OAuth2.createService('MyChatBot')
+      // Set the endpoint URL.
+      .setTokenUrl('https://oauth2.googleapis.com/token')
+
+      // Set the private key and issuer.
+      .setPrivateKey(PRIVATE_KEY)
+      .setIssuer(CLIENT_EMAIL)
+
+      // Set the property store where authorized tokens should be persisted.
+      .setPropertyStore(PropertiesService.getScriptProperties())
+
+      // Set the scope.
+      .setScope('https://www.googleapis.com/auth/chat.bot');
+}
+
+/**
+ * Gets message attachment and returns it
+ */
+function getAttachment(attachmentName) {
+  var attachment = {};
+  var url = "https://chat.googleapis.com/v1/" + attachmentName;
+
+  var service = getOAuth2Service(); 
+  
+  var response = UrlFetchApp.fetch(url, {
+    method: 'get',
+    headers: {
+      'Authorization': 'Bearer ' + service.getAccessToken()
+    },
+    muteHttpExceptions:true,
+  });
+
+  if(response.getResponseCode() != 200){
+    return "Failed to get attachment with error code: " + response.getResponseCode();
+  }
+  attachment = JSON.parse(response)
+  return attachment;
+}
+```
+##### getByteStream(image_uploaded_attachment.attachmentDataRef.resourceName, name)
+```
+
+/**
+ * Calls Media api to read data. dataRef is the reference to the uploaded
+ * file to be read, found in the attachment.
+ */
+function getByteStream(dataRef, username) {
+ var blob = "";
+ var driveFileName = "";
+ var url = "https://chat.googleapis.com/v1/media/"+ dataRef +"?alt=media"
+
+ var service = getOAuth2Service();
+ var response = UrlFetchApp.fetch(url, {
+   headers: {
+     'Authorization': 'Bearer ' + service.getAccessToken(),
+   },
+   'muteHttpExceptions': true,
+ });
+
+ if(response.getResponseCode() != 200){
+   return "Failed to get file content with error code: " + response.getResponseCode();
+ }
+ 
+  wb = SpreadsheetApp.openById("1wAOgTMgqTz1hm35tOZvcHA7jm2Cbuy9F7nZAB91DaUM");
+  lr = wb.getActiveSheet().getLastRow();
+  lc = wb.getActiveSheet().getLastColumn();
+
+  srrid = wb.getActiveSheet().getRange(lr, 2).getValue();   
+ 
+ // Storing to requisite folder and returning the filename
+ blob = response.getBlob();
+ driveFileName = DriveApp.getFolderById('1FGOsBXofYYcsJC0nqtIzHbfAslhLK-P2').createFile(blob).setName('SR_'+srrid+'-'+username);
+ return driveFileName;
+}
+```
