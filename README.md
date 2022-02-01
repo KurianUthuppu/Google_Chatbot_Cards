@@ -207,6 +207,7 @@ var image_uploaded_attachment = getAttachment(image_uploaded);
 // Store the attachment in the requisite drive folder and get the filename
 output = getByteStream(image_uploaded_attachment.attachmentDataRef.resourceName, name);
 ```
+##### Getting private key and client-id
 - One needs to get the private key and client-id to access the data from the rest-api
 
 ```
@@ -214,7 +215,9 @@ var PRIVATE_KEY =
     '-----BEGIN PRIVATE KEY-----\nUAIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCnBRbLUjPIZDiZ\nFxhRC1UDk4mzGnwOJYick9NzmYZgHk68gAthdMv6466Qga+9DWzMQBI8vgfnnVXY\n1LgN9vJhhZEMol8BVoOmoupWcNxS0rTCN5YYb5Jf8KIbkgM54vtw8sa3w6/R7TwN\nKSC5/W/qxwAbMStiF+fmzFQWS6iWSx5eToSKhMytrLaf6Fask5r/nzPk1UAZiU5k\ncyvYHrGb2YvCs1B1/icPcBIiA1hxpTro9laZrbEpsX6btwRA6TFBNrlR/tyOQZlc\nH5mzewpO5EUPZV9bdbMBoIWwmfJ1BqBesOygUG5tP/ntQYFUmi/elrPBWqC4DfGG\neq8QuNJTAgMBAAECggEADEifiIyfKlnUn83HCA7jqEOtmPKVtSSli36Dyri73U3d\nVJfGPoCsj+M274HaPvlByzPbI4SGaE52BeB/OOe0o9+C737xpdOLEzJgMcNTMPQ2\nPyJ/c4ShK1UzVvvCKPu8qm3wl4tY3wOnqwd6JNla5dWE+HsBSdGgSKU2ef1OhN8b\nDSbpyyuZRn+orAdICBVKe7ZHOFTZ+W9KXEIiyklygKjHou87topj6FrzKiBKml/T\ntmoAyEib190alNYUbtOtClJr8GDqfdRgeAZf0c8DOfJzaDePYWj1EODQgC22w+/k\nlBuM11MfUsRv9b2wV3jaQKCaoTPRv7k5y6CjsjusgQKBgQDSMJY54+LAX1dInYFK\nWTak779iZm5e+AYPJmaSwL4X1ih4IvzpCq0UQQw02yWSemlT8c9qkW5XRabdthLk\nr+KdVxue68M/e9o9pTZG9XFcgJ5ungteBxaOHBQX05LQSScMigUvceyHl1JN9ty3\nA0p7ihMKC5ivdZYLJcO0viNSUQKBgQDLa9zmhL5HrhkjdOogHffpeWuqeiYsN1Ph\nygazMzIIGIgO9xa2/jgWRaJQgHf4z81RftC18u3DqjSQORkdZNSo1zoAHpep4qm7\ngdxfRF33Qwe7G5PP/XZhxZTalYcVVjjHPkAwma2xaSrspLnfE2zuP/ey9jY1DgxS\nCzHPDmvtYwKBgGRSLGAkm+WVm+Ncycjiq+ItS/t7SFUrrrisa2i/9fsKjGZKzMut\n/M4d/enIHza6lmsqjwUeRLwC0pIfxQTBrjfKy7QecyJpytCBelaD74dnHDdP170Z\nZPqvDCgTI4+mWqzxc2ghx/Mvlmj/2ni/aV1tmYjB4C5ewS6w56fs2I8BAoGARdgl\nIqkVRDtMulXcRWbExk9AXmpOTQQ6Mt5Q6pp7ZTg3Dxxbmj0zOMJz9rwFdVK0JnUq\naC6e4H3CSnqwWt1R/x7W9U+Lt3Lx4EW4SqWItes37lCLsfBPA0b50wtgND1EhXSk\nSYuajb2UVWhBwYxD7JHeFH5hIlpOdKUPVw6WlA0CgYATrK+VVcNaLXrIuzXyXc/m\nbznVS2mg7WZM/yUzo6CT4Pq96y1P+6oz/XnGQYhR979QuOlbDC3Xmmlamkd7pLhN\nX4BYVK6nzAufJFtGoo41brWmMsQGHBERF/4FsgYNf4XkSvPQOJVN750uXRYc8A5o\nadxQkXRHv9ikdPNlMQEiZW==\n-----END PRIVATE KEY-----\n';
 var CLIENT_EMAIL = 'krapht-zanctur-913439@appspot.gserviceaccount.com';
 ```
-- getAttachment(image_uploaded)
+PS: Don't worry, I am not that dump to give you my actual private key and client-id :wink:  
+    The above are just samples
+##### getAttachment(image_uploaded)
 ```
 /**
  * Authorize the user
