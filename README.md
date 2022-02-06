@@ -298,3 +298,12 @@ function getByteStream(dataRef, username) {
  return driveFileName;
 }
 ```
+#### Getting private key and client-id
+- Go to https://console.cloud.google.com/ and login with your user-id and password
+- Go to IAM & Admin > Service Accounts
+- Select the associated project (chatbot) service account
+- Go to the section keys and then click 'Add Key' > Create new key 
+- Private key will be generated and you could save them to the local disk 
+- Copy the private key which which begins like "-----BEGIN PRIVATE KEY-----\nMI and ends like v3U=\n-----END PRIVATE KEY-----\n"
+- Copy the client_email as well 
+- Store the above two to the variables PRIVATE_KEY & CLIENT_EMAIL (and yes, please don't share the same with anyone :wink:)
