@@ -307,3 +307,5 @@ function getByteStream(dataRef, username) {
 - Copy the private key which which begins like "-----BEGIN PRIVATE KEY-----\nMI and ends like v3U=\n-----END PRIVATE KEY-----\n"
 - Copy the client_email as well 
 - Store the above two to the variables PRIVATE_KEY & CLIENT_EMAIL (and yes, please don't share the same with anyone :wink:)
+
+The full code has been uploaded to this folder under the filename Google_Chatbot.ts
