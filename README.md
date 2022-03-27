@@ -308,5 +308,5 @@ function getByteStream(dataRef, username) {
 - Copy the client_email as well 
 - Store the above two to the variables PRIVATE_KEY & CLIENT_EMAIL (and yes, please don't share the same with anyone :wink:)
 
-The full code has been uploaded to this folder under the filename Google_Chatbot.ts
+The full code has been uploaded to this folder under the filename Google_Chatbot.ts.  
 You could also view the relevant pics as well that have been uploaded to this folder.
